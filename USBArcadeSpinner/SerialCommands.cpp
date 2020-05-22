@@ -26,7 +26,8 @@ Command commands[] = {
 void serialInit()
 {
     Serial.begin(57600);
-    while (!Serial)
+    // don not wait to long
+    while (!Serial&& millis()<5000)
     {
         ; // wait for serial port to connect. Needed for native USB port only
     }
@@ -147,8 +148,6 @@ void ping(String param)
     Serial.println("pong");
 }
 
-//cmd_setSpinnerSlow
-
 void cmd_setMouseStep(String param)
 {
     int paramint = param.toInt();
@@ -178,7 +177,7 @@ void cmd_setSpinnerSlow(String param)
 void cmd_setSpinnerLsr(String param)
 {
     int paramint = param.toInt();
-    if ( paramint > 0 and (2^paramint)< (spinnerSlow+1)  ) {
+    if ( paramint >= 0 and (2^paramint)< (spinnerSlow+1)  ) {
       spinnerLsr = paramint;
       Serial.print("spinnerLsr set to ");
       Serial.println(paramint);

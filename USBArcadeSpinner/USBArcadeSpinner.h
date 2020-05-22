@@ -24,6 +24,11 @@
 #include <EEPROM.h>
 
 // encoder from Paul Stoffregen
+// This optional setting causes Encoder to use more optimized code,
+// It must be defined before Encoder.h is included.
+//#define ENCODER_OPTIMIZE_INTERRUPTS
+#define ENCODER_USE_INTERRUPTS
+
 #include <Encoder.h>
 
 // hardware defines pins

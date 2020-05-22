@@ -28,19 +28,22 @@ Encoder myEnc(  ROTARY_A_DT, ROTARY_A_CLK);
  * Setup
  */
 void setup() {
+    #ifndef NOMOUSE
+  Mouse.begin();
+  #endif
+  
   // initialize serial port
   serialInit();
   // show version
   cmd_startline("");
-  cmd_defaults("");
+  cmd_load("");
   // initialize the buttons' inputs:
-  pinMode(ROTARY_A_BUTTON1, INPUT_PULLUP);
+    pinMode(ROTARY_A_BUTTON1, INPUT_PULLUP);
+    pinMode(CONFIG_ENABLE, INPUT_PULLUP);
 
 
   // initialize mouse control:
-  #ifndef NOMOUSE
-  Mouse.begin();
-  #endif
+
 }
 
 
@@ -109,12 +112,15 @@ void loop() {
     #endif
 
 #ifndef NOMOUSE
-    Mouse.move(step* direction, 0, 0);
+    Mouse.move(step* direction, 0);
 
 #endif
     
     spinnermilis = millis();
   }
   // Serial
-serialEvent(); //call the function
+  int configenable = digitalRead(CONFIG_ENABLE);
+  if ( configenable == LOW ) {
+    serialEvent(); //call the function
+  }
 } //loop

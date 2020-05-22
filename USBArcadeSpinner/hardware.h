@@ -29,6 +29,6 @@
 #define ROTARY_A_CLK 3
 #define ROTARY_A_DT 2
 #define ROTARY_A_BUTTON1 7
-//#define ROTARY_A_BUTTON2 8
+#define CONFIG_ENABLE 8
 
 #endif

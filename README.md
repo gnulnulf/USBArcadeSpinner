@@ -23,3 +23,12 @@ requires:
 encoder from Paul Stoffregen
 mouse (default)
 eeprom(default)
+
+Mechanical
+==========
+
+Included:
+ Parametric Involute Bevel and Spur Gears by GregFrost
+ It is licensed under the Creative Commons - GNU GPL license.
+ © 2010 by GregFrost
+ http://www.thingiverse.com/thing:3575

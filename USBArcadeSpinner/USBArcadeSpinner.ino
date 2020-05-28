@@ -86,6 +86,7 @@ void loop() {
   // movement
   long newPosition = myEnc.read();
   if (newPosition != oldPosition) {
+   int delta=newPosition-oldPosition;
     long time = millis() - spinnermilis;
     int step =0;
     int direction = -1;
@@ -104,6 +105,10 @@ void loop() {
 #ifdef SERIALDEBUG
     Serial.print("POS: ");
     Serial.print(newPosition);
+
+        Serial.print(" DELTA: ");
+    Serial.print(delta);
+
     Serial.print("  TIME: ");
     Serial.print(time);
 
